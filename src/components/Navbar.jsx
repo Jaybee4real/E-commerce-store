@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 export default class Navbar extends Component {
   render() {
     return (
-      <div className="navbar-container">
+      <div
+        className={`navbar-container ${this.props.cartOpen ? "cart-open" : ""}`}
+      >
+        <i className="fa fa-bars navbar-item"></i>
         <div className="logo">E-Commerce Store</div>
         <div className="links-container">
           <Link className="navbar-item link" to="/home">
@@ -18,7 +21,10 @@ export default class Navbar extends Component {
           </Link>
         </div>
         <div className="right-side">
-          <i className="navbar-item fa fa-shopping-cart"></i>
+          <i
+            className="navbar-item fa fa-shopping-cart"
+            onClick={() => this.props.updateCartOpenState()}
+          ></i>
           <i className="navbar-item fa fa-search"></i>
         </div>
       </div>

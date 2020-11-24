@@ -56,8 +56,8 @@ export default class Card extends Component {
         <img
           ref={(e) => (this.itemImage = e)}
           src={this.props.image}
-          height={290}
-          width={290}
+          height={200}
+          width={200}
           alt=""
         />
         <div className="category" ref={(e) => (this.category = e)}>

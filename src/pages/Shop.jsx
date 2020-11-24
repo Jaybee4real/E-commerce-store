@@ -6,25 +6,52 @@ export default class Shop extends Component {
     super(props);
     this.state = {
       items: [],
+      loading: true,
     };
   }
+
   componentDidMount() {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        data.forEach((data) => {
-          let prev = this.state.items;
-          prev.push(data);
-          this.setState({
-            items: prev,
+    if (this.state.items.length === 0) {
+      fetch("https://fakestoreapi.com/products")
+        .then((res) => res.json())
+        .then((data) => {
+          data.forEach((data) => {
+            let prev = this.state.items;
+            prev.push(data);
+            this.setState({
+              items: prev,
+              loading: false,
+            });
           });
         });
-      });
-      console.log(this.state.items)
+    }
   }
+
+  populateData = () => {
+    return this.state.loading == false ? (
+      this.state.items.map((item) => (
+        <Card
+          key={item.id}
+          title={
+            item.title.length > 68
+              ? `${item.title.substring(0, 68)}...`
+              : item.title
+          }
+          price={item.price}
+          image={item.image}
+          category={item.category}
+        />
+      ))
+    ) : (
+      <h1>Loading ...</h1>
+    );
+  };
+
   render() {
     return (
-      <div>
+      <div
+        className={`page-container ${this.props.cartOpen ? "cart-active" : ""}`}
+      >
         <div className="header">
           <div className="left-side">
             <h1>
@@ -40,19 +67,7 @@ export default class Shop extends Component {
 
         <div className="products-section section">
           <h1 className="heading">Products</h1>
-          <div className="content-container">
-            {this.state.items !== []
-              ? this.state.items.map((element) => (
-                  <Card
-                    key={element.id}
-                    title={element.title}
-                    price={element.price}
-                    image={element.image}
-                    category={element.category}
-                  />
-                ))
-              : this.state.items === [] (<h1>Loading ...</h1>)}
-          </div>
+          <div className="content-container">{this.populateData()}</div>
         </div>
       </div>
     );

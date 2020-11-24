@@ -1,3 +1,10 @@
+.page-container {
+  transition: all 0.4s ease;
+  &.cart-active {
+    transform: translateX(-20rem);
+  }
+}
+
 .navbar-container {
   display: flex;
   flex-direction: row;
@@ -19,6 +26,10 @@
     .logo {
       color: #7296a1 !important;
     }
+  }
+
+  &.cart-open {
+    transform: translateX(-20rem);
   }
 
   .logo {
@@ -46,6 +57,14 @@
     &.active,
     &:hover {
       border-bottom: 2px solid #7296a1;
+    }
+
+    &.fa-bars {
+      margin: 0;
+      margin-left: 0.7rem;
+      margin-top: -0.1rem;
+      display: none;
+      font-size: 1.3rem;
     }
   }
 
@@ -103,6 +122,7 @@
       background-image: url("../img/download.png");
       width: 100%;
       background-size: 100%;
+      background-repeat: no-repeat;
     }
   }
 }
@@ -117,6 +137,12 @@
   }
 }
 
+@media (max-width: 812px) {
+  .header .right-side {
+    width: 100%;
+  }
+}
+
 @media (max-width: 700px) {
   .header {
     padding-top: 6rem;
@@ -125,10 +151,19 @@
   .navbar-container .links-container {
     display: none;
   }
+  .navbar-container .logo {
+    margin-left: 0.5rem !important;
+  }
+
+  .navbar-container .fa-bars {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 500px) {
   .navbar-container {
+    padding: auto 0 !important;
+    justify-content: space-between;
     .logo {
       font-size: 1.1rem;
       margin-top: 0.3rem;
@@ -171,7 +206,7 @@
   margin: 2rem auto;
 
   .content-container {
-    margin: .5rem;
+    margin: 0.5rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -191,14 +226,17 @@
 }
 
 .card-container {
-  height: 515px;
-  width: 300px;
+  height: 425px;
+  width: 230px;
   border-radius: 3px;
   transition: all 0.4s ease;
   cursor: pointer;
   padding: 5px;
   position: relative;
   margin: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &:hover {
     box-shadow: 0px 1px 2px 1px #80808073;
@@ -240,7 +278,7 @@
     flex-direction: row;
     width: calc(100% + 10px);
     position: relative;
-    left: -5px;
+    // left: -5px;
     background-color: #175a71;
     color: white;
     padding: 0.4rem;
@@ -257,14 +295,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: 0.5rem;
 
     .add-to-cart-btn {
       background-color: #f6b100;
       height: fit-content;
       width: fit-content;
-      padding: 0.5rem;
+      padding: 0.5rem 0.1rem;
       color: white;
       font-weight: 600;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
       border-radius: 2px;
       border: 2px solid #f6b100;
       cursor: pointer;
@@ -288,7 +329,6 @@
     .quantity-container {
       display: flex;
       flex-direction: row;
-      margin: 0.5rem;
 
       .increase,
       .decrease {
