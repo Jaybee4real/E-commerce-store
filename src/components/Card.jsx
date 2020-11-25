@@ -8,6 +8,7 @@ export default class Card extends Component {
     };
   }
   render() {
+    let cartItems = this.props.cartItems;
     let updateItemQuantity = (arg) => {
       if (arg === "decrease") {
         if (this.state.itemQuantity === 1) return;
@@ -28,41 +29,32 @@ export default class Card extends Component {
 
     let addCardItemToCart = () => {
       let newItem = {
-        category: this.category.innerHTML,
+        category: this.props.category,
         quantity: this.state.itemQuantity,
-        price: this.price.innerHTML,
-        image: this.itemImage.src,
+        price: this.props.price,
+        image: this.props.image,
+        title: this.props.title,
+        id: this.props.id,
       };
-
-      if (localStorage.getItem("cart") !== null) {
-        let cart = JSON.parse(localStorage.getItem("cart"));
-        cart.forEach((cartItem) => {
-          if (cartItem === newItem) {
-            console.log("this");
-            return;
-          }
-        });
-        localStorage.setItem("cart", JSON.stringify(cart));
-        cart.push(newItem);
-      } else {
+      if (!localStorage.getItem("cart")) {
         let cart = [];
         cart.push(newItem);
-        console.log(cart);
+        this.props.updateCartItems(cart);
         localStorage.setItem("cart", JSON.stringify(cart));
+      } else if (localStorage.getItem("cart")) {
+        const newCartItems = cartItems.filter(
+          (item) => item.title !== newItem.title
+        );
+        newCartItems.push(newItem);
+        this.props.updateCartItems(newCartItems);
+        localStorage.setItem("cart", JSON.stringify(newCartItems));
       }
     };
+
     return (
       <div className="card-container">
-        <img
-          ref={(e) => (this.itemImage = e)}
-          src={this.props.image}
-          height={200}
-          width={200}
-          alt=""
-        />
-        <div className="category" ref={(e) => (this.category = e)}>
-          {this.props.category}
-        </div>
+        <img src={this.props.image} height={200} width={200} alt="" />
+        <div className="category">{this.props.category}</div>
         <div className="rating">
           <i className="fa fa-star"></i>
           <i className="fa fa-star"></i>
@@ -73,9 +65,8 @@ export default class Card extends Component {
         <div className="name">{this.props.title}</div>
         <div className="price">
           price:
-          <span ref={(e) => (this.price = e)}>₦{this.props.price}</span>
+          <span>₦{this.props.price}</span>
         </div>
-
         <div className="add-to-cart-container">
           <div className="quantity-container">
             <div
@@ -88,7 +79,6 @@ export default class Card extends Component {
               type="number"
               value={this.state.itemQuantity}
               onChange={() => updateItemQuantity()}
-              ref={(e) => (this.itemQuantityInput = e)}
             ></input>
             <div
               className="increase"
@@ -97,7 +87,11 @@ export default class Card extends Component {
               +
             </div>
           </div>
-          <div className="add-to-cart-btn" onClick={addCardItemToCart}>
+          <div
+            ref={(e) => (this.addToCartBtn = e)}
+            className="add-to-cart-btn"
+            onClick={addCardItemToCart}
+          >
             Add To Cart<i className="fad fa-shopping-cart"></i>
           </div>
         </div>

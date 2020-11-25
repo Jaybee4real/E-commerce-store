@@ -28,7 +28,7 @@ export default class Shop extends Component {
   }
 
   populateData = () => {
-    return this.state.loading == false ? (
+    return this.state.loading === false ? (
       this.state.items.map((item) => (
         <Card
           key={item.id}
@@ -37,9 +37,12 @@ export default class Shop extends Component {
               ? `${item.title.substring(0, 68)}...`
               : item.title
           }
+          id={item.id}
           price={item.price}
           image={item.image}
           category={item.category}
+          cartItems={this.props.cartItems}
+          updateCartItems={this.props.updateCartItems}
         />
       ))
     ) : (

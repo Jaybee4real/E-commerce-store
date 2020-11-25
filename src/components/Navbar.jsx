@@ -21,11 +21,18 @@ export default class Navbar extends Component {
           </Link>
         </div>
         <div className="right-side">
-          <i
-            className="navbar-item fa fa-shopping-cart"
-            onClick={() => this.props.updateCartOpenState()}
-          ></i>
           <i className="navbar-item fa fa-search"></i>
+          <i
+            className={`navbar-item fa fa-shopping-cart ${
+              this.props.cartItems && this.props.cartItems.length > 0
+                ? "cart-number"
+                : ""
+            }`}
+            onClick={() => this.props.updateCartOpenState()}
+            data-count={`${
+              this.props.cartItems ? this.props.cartItems.length : ""
+            }`}
+          ></i>
         </div>
       </div>
     );

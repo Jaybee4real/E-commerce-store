@@ -18,7 +18,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cartItems: [],
+      cartItems: JSON.parse(localStorage.getItem("cart")),
       cartOpen: false,
     }
   }
@@ -29,19 +29,32 @@ export default class App extends Component {
       })
     }
 
+    let updateCartItems = (newState) => {
+      this.setState({
+        cartItems: newState,
+      })
+      localStorage.setItem("cart", JSON.stringify(this.state.cartItems))
+    }
     return (
       <Router>
         <Navbar cartItems={this.state.cartItems} cartOpen={this.state.cartOpen} updateCartOpenState={updateCartOpenState} />
         <Switch>
           <Route exact path="/shop"
-            render={(props) => <Shop {...props} cartOpen={this.state.cartOpen} />}
+            render={(props) => <Shop {...props}
+              cartOpen={this.state.cartOpen}
+              updateCartItems={updateCartItems}
+              cartItems={this.state.cartItems} />}
           ></Route>
           <Route exact path="/home" component={Home}></Route>
           <Route exact path="/">
             <Redirect to="/shop"></Redirect>
           </Route>
         </Switch>
-        <Cart cartItems={this.state.cartItems} />
+        <Cart
+          cartItems={this.state.cartItems}
+          updateCartItems={updateCartItems}
+          cartOpen={this.state.cartOpen}
+          updateCartOpenState={updateCartOpenState} />
       </Router>
     );
   }
