@@ -7,11 +7,13 @@ import React, { Component } from 'react'
 
 ////components//
 import Navbar from "./components/Navbar";
+import CartComponent from "./components/CartComponent";
 
+import Checkout from "./pages/Checkout";
 
 ////style////
 import "./styles/styles.scss"
-import Cart from "./components/Cart";
+import About from "./pages/About";
 
 
 export default class App extends Component {
@@ -35,6 +37,7 @@ export default class App extends Component {
       })
       localStorage.setItem("cart", JSON.stringify(this.state.cartItems))
     }
+
     return (
       <Router>
         <Navbar cartItems={this.state.cartItems} cartOpen={this.state.cartOpen} updateCartOpenState={updateCartOpenState} />
@@ -45,12 +48,18 @@ export default class App extends Component {
               updateCartItems={updateCartItems}
               cartItems={this.state.cartItems} />}
           ></Route>
+          <Route exact path="/checkout"
+            render={(props) => <Checkout {...props}
+              updateCartItems={updateCartItems}
+              cartItems={this.state.cartItems} />}
+          ></Route>
           <Route exact path="/home" component={Home}></Route>
+          <Route exact path="/about" component={About}></Route>
           <Route exact path="/">
             <Redirect to="/shop"></Redirect>
           </Route>
         </Switch>
-        <Cart
+        <CartComponent
           cartItems={this.state.cartItems}
           updateCartItems={updateCartItems}
           cartOpen={this.state.cartOpen}

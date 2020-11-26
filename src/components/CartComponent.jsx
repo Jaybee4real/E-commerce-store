@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import CartCard from "./CartCard";
 
 export default class Cart extends Component {
   render() {
+    let cartItems = this.props.cartItems;
     let totalPriceOfCartItems = () => {
       let totalPrice = 0;
       if (this.props.cartItems) {
@@ -14,8 +16,27 @@ export default class Cart extends Component {
       } else return;
     };
     totalPriceOfCartItems();
-    if (localStorage.getItem("cart")) {
-      let cartItems = this.props.cartItems;
+    if (cartItems.length === 0) {
+      console.log("this");
+      return (
+        <div
+          className={`cart-container no-items ${
+            this.props.cartOpen ? "active" : ""
+          }`}
+        >
+          <i
+            className="close-button fal fa-times"
+            onClick={() => this.props.updateCartOpenState()}
+          ></i>
+          <div className="heading-container">
+            <div className="heading">Your Cart</div>
+            <div className="items-count">0 Item(s)</div>
+          </div>
+          <hr />
+          <span>No Items In Cart</span>
+        </div>
+      );
+    } else if (localStorage.getItem("cart")) {
       return (
         <div
           className={`cart-container ${this.props.cartOpen ? "active" : ""}`}
@@ -48,35 +69,31 @@ export default class Cart extends Component {
                 quantity={item.quantity}
                 cartItems={cartItems}
                 updateCartItems={this.props.updateCartItems}
+                dimension={60}
               />
             );
           })}
 
+          <div
+            className="clear-cart"
+            onClick={() => {
+              this.props.updateCartItems([]);
+            }}
+          >
+            Clear Cart
+          </div>
           <div className="checkout-container">
             <div className="total">
               Total : ₦<span>{totalPriceOfCartItems()}</span>
             </div>
-            <div className="checkout-btn">Checkout(pay)</div>
+            <Link
+              onClick={() => this.props.updateCartOpenState()}
+              className="checkout-btn"
+              to="/checkout"
+            >
+              Checkout(pay)
+            </Link>
           </div>
-        </div>
-      );
-    } else {
-      return (
-        <div
-          className={`cart-container no-items ${
-            this.props.cartOpen ? "active" : ""
-          }`}
-        >
-          <i
-            className="close-button fal fa-times"
-            onClick={() => this.props.updateCartOpenState()}
-          ></i>
-          <div className="heading-container">
-            <div className="heading">Your Cart</div>
-            <div className="items-count">0 Item(s)</div>
-          </div>
-          <hr />
-          <span>No Items In Cart</span>
         </div>
       );
     }

@@ -10,13 +10,28 @@ export default class Navbar extends Component {
         <i className="fa fa-bars navbar-item"></i>
         <div className="logo">E-Commerce Store</div>
         <div className="links-container">
-          <Link className="navbar-item link" to="/home">
+          <Link
+            className={`navbar-item link ${
+              window.location.href.includes("home") ? "active" : " "
+            }`}
+            to="/home"
+          >
             Home
           </Link>
-          <Link className="navbar-item link active" to="/shop">
+          <Link
+            className={`navbar-item link  ${
+              window.location.href.includes("shop") ? "active" : " "
+            }`}
+            to="/shop"
+          >
             Shop
           </Link>
-          <Link className="navbar-item link" to="/About">
+          <Link
+            className={`navbar-item link ${
+              window.location.href.includes("about") ? "active" : " "
+            }`}
+            to="/about"
+          >
             About
           </Link>
         </div>

@@ -32,17 +32,14 @@ export default class Shop extends Component {
       this.state.items.map((item) => (
         <Card
           key={item.id}
-          title={
-            item.title.length > 68
-              ? `${item.title.substring(0, 68)}...`
-              : item.title
-          }
+          title={item.title}
           id={item.id}
           price={item.price}
           image={item.image}
           category={item.category}
           cartItems={this.props.cartItems}
           updateCartItems={this.props.updateCartItems}
+          description={item.description}
         />
       ))
     ) : (

@@ -36,11 +36,27 @@ export default class CartCard extends Component {
     };
     return (
       <div className="cart-card-container">
-        <img src={this.props.image} height={70} width={60} alt="" />
+        <img
+          src={this.props.image}
+          height={this.props.dimension}
+          width={this.props.dimension}
+          alt=""
+        />
         <div className="details-container">
           <div className="title">{this.props.title}</div>
           <div className="price">
             Price: <span>{this.props.price}</span>
+          </div>
+
+          <div>
+            {this.props.description ? (
+              <div className="description">
+                <span>Description : </span>
+                {this.props.description.substring(0, 200) + "..."}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <div className="quantity-container">
             Quantity:

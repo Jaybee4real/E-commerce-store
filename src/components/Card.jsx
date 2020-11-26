@@ -35,6 +35,7 @@ export default class Card extends Component {
         image: this.props.image,
         title: this.props.title,
         id: this.props.id,
+        description: this.props.description,
       };
       if (!localStorage.getItem("cart")) {
         let cart = [];
@@ -62,7 +63,11 @@ export default class Card extends Component {
           <i className="fa fa-star"></i>
           <i className="fa fa-star-o"></i>
         </div>
-        <div className="name">{this.props.title}</div>
+        <div className="name">
+          {this.props.title.length > 68
+            ? `${this.props.title.substring(0, 68)}...`
+            : this.props.title}
+        </div>
         <div className="price">
           price:
           <span>₦{this.props.price}</span>
