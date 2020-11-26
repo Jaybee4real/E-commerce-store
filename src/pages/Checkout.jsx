@@ -19,7 +19,7 @@ export default class Checkout extends Component {
     //////////////Payment Methods////////
     ////////////////////////////////////
     let payWithPaystack = () => {
-      let amount = totalPriceOfCartItems();
+      let amount = Math.round(totalPriceOfCartItems());
       let email = prompt(
         "Please Enter The Email Address To Recieve The Paystack(stripe) Reciept"
       );
