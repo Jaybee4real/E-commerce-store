@@ -100,7 +100,9 @@ export default class Shop extends Component {
             <div className="btn">Explore</div>
           </div>
           <div className="right-side">
-            <div className="image"></div>
+            <div
+              className="image image-1"
+            ></div>
           </div>
         </div>
 

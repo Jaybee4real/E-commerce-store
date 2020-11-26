@@ -80,6 +80,16 @@ svg {
     .logo {
       color: #7296a1 !important;
     }
+
+    .navbar-item.home,
+    .logo.home {
+      color:#6b5b4a !important;
+    }
+
+    .navbar-item.about,
+    .logo.about {
+      color: #32253d !important;
+    }
   }
 
   &.cart-open {
@@ -151,9 +161,9 @@ svg {
   }
 }
 
-@media screen {
-  .navbar-item:hover {
-    border: none !important;
+@media (hover: none) {
+  .navbar-item:hover:not(.active) {
+    border: none;
   }
 }
 
@@ -195,10 +205,17 @@ svg {
     background-size: 100%;
     .image {
       height: 100%;
-      background-image: url("../img/download.png");
       width: 100%;
       background-size: 100%;
       background-repeat: no-repeat;
+
+      &.image-1 {
+        background-image: url("../img/download.png");
+      }
+
+      &.image-2 {
+        background-image: url("../img/download2.png");
+      }
     }
   }
 }
@@ -286,6 +303,30 @@ svg {
   padding: 1rem;
   margin: 2rem auto;
 
+  p.subheading {
+    margin: 2rem auto;
+    color: #575757;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    max-width: 560px;
+    text-align: center;
+  }
+
+  .heading {
+    color: #32253d;
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem;
+  }
+
+  .coming-soon {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 2rem;
+    color: #32253d;
+  }
+
   .content-container {
     margin: 0.5rem;
     display: flex;
@@ -346,7 +387,7 @@ svg {
 
     i {
       font-size: 0.9rem;
-      color: #f6b100;
+      color:#6b5b4a;
 
       &.fa-star-o {
         color: #4d656d;
@@ -379,7 +420,7 @@ svg {
     margin-top: 0.5rem;
 
     .add-to-cart-btn {
-      background-color: #f6b100;
+      background-color:#6b5b4a;
       height: fit-content;
       width: fit-content;
       padding: 0.5rem 0.1rem;
@@ -388,16 +429,16 @@ svg {
       font-size: 0.85rem;
       margin-left: 0.5rem;
       border-radius: 2px;
-      border: 2px solid #f6b100;
+      border: 2px solid#6b5b4a;
       cursor: pointer;
       transition: all 0.4s ease;
 
       &:hover {
         background-color: transparent;
-        color: #f6b100 !important;
+        color:#6b5b4a !important;
 
         i {
-          color: #f6b100 !important;
+          color:#6b5b4a !important;
         }
       }
 
@@ -650,13 +691,6 @@ svg {
 .checkout-page-container {
   min-height: 100vh;
 
-  .heading {
-    color: #32253d;
-    font-size: 2rem;
-    text-align: center;
-    margin: 2rem;
-  }
-
   .checkout-cart-container {
     max-width: 1200px;
     padding: 7vw;
@@ -784,6 +818,7 @@ svg {
   padding-top: 3rem;
   transform: translateX(-120vw);
   transition: all 0.4s ease;
+  overflow: scroll;
   box-shadow: 60px 0px 100px -90px #000000;
 
   &.active {

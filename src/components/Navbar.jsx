@@ -7,13 +7,18 @@ export default class Navbar extends Component {
       <div
         className={`navbar-container ${this.props.cartOpen ? "cart-open" : ""}`}
       >
-        <i className="fa fa-bars navbar-item" onClick={() => this.props.toggleSidebar()}></i>
-        <div className="logo">E-Commerce Store</div>
+        <i
+          className={`fa fa-bars navbar-item ${this.props.activeScreen}`}
+          onClick={() => this.props.toggleSidebar()}
+        ></i>
+        <div className={`logo ${this.props.activeScreen}`}>
+          E-Commerce Store
+        </div>
         <div className="links-container">
           <Link
             className={`navbar-item link ${
               this.props.activeScreen === "home" ? "active" : " "
-            }`}
+            } ${this.props.activeScreen}`}
             to="/home"
             onClick={() => this.props.updateActiveScreen("home")}
           >
@@ -22,7 +27,7 @@ export default class Navbar extends Component {
           <Link
             className={`navbar-item link  ${
               this.props.activeScreen === "shop" ? "active" : " "
-            }`}
+            } ${this.props.activeScreen}`}
             to="/shop"
             onClick={() => this.props.updateActiveScreen("shop")}
           >
@@ -31,7 +36,7 @@ export default class Navbar extends Component {
           <Link
             className={`navbar-item link ${
               this.props.activeScreen === "about" ? "active" : " "
-            }`}
+            } ${this.props.activeScreen}`}
             to="/about"
             onClick={() => this.props.updateActiveScreen("about")}
           >
@@ -39,13 +44,15 @@ export default class Navbar extends Component {
           </Link>
         </div>
         <div className="right-side">
-          <i className="navbar-item fa fa-search"></i>
+          <i
+            className={`navbar-item fa fa-search ${this.props.activeScreen}`}
+          ></i>
           <i
             className={`navbar-item fa fa-shopping-cart ${
               this.props.cartItems && this.props.cartItems.length > 0
                 ? "cart-number"
                 : ""
-            }`}
+            } ${this.props.activeScreen}`}
             onClick={() => this.props.updateCartOpenState()}
             data-count={`${
               this.props.cartItems ? this.props.cartItems.length : ""

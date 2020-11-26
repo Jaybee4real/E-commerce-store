@@ -23,7 +23,7 @@ export default class App extends Component {
     this.state = {
       cartItems: JSON.parse(localStorage.getItem("cart")),
       cartOpen: false,
-      activeScreen: "shop",
+      activeScreen: window.location.pathname.split("/")[1],
       sidebarActive: false
     }
   }
@@ -69,7 +69,10 @@ export default class App extends Component {
               updateCartItems={updateCartItems}
               cartItems={this.state.cartItems} />}
           ></Route>
-          <Route exact path="/home" component={Home}></Route>
+          <Route exact path="/home"
+            render={(props) => <Home {...props}
+              cartOpen={this.state.cartOpen} />}
+          ></Route>
           <Route exact path="/about" component={About}></Route>
           <Route exact path="/">
             <Redirect to="/shop"></Redirect>
