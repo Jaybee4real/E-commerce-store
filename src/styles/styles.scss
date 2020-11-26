@@ -1,5 +1,19 @@
+svg {
+  width: 110px;
+  height: auto;
+  margin-top: 8rem;
+}
+
+.disabled {
+  background-color: grey !important;
+  color: white !important;
+  border-color: white;
+  pointer-events: none;
+}
+
 .page-container {
   transition: all 0.4s ease;
+  min-height: 100vh;
   &.cart-active {
     transform: translateX(-20rem);
   }
@@ -25,13 +39,6 @@
       mix-blend-mode: difference;
     }
   }
-}
-
-.disabled {
-  background-color: grey !important;
-  color: white !important;
-  border-color: white;
-  pointer-events: none;
 }
 
 .clear-cart {
@@ -483,8 +490,6 @@
     overflow: scroll !important;
   }
 
-
-
   .checkout-btn-container {
     display: flex;
     flex-direction: row;
@@ -763,5 +768,81 @@
 @media (max-width: 500px) {
   .checkout-header {
     background-size: 100% !important;
+  }
+}
+
+/////////////Sidebar Styles////////
+
+.sidebar-container {
+  position: fixed;
+  width: 17rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  z-index: 10;
+  padding-top: 3rem;
+  transform: translateX(-120vw);
+  transition: all 0.4s ease;
+  box-shadow: 60px 0px 100px -90px #000000;
+
+  &.active {
+    transform: translate(0) !important;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    margin: 2rem;
+    margin-left: 0.5rem;
+    position: relative;
+    color: #175a71;
+    font-weight: 500;
+
+    span {
+      font-size: 0.7rem;
+      font-style: italic;
+      margin-left: 2rem;
+      position: relative;
+      top: -0.8rem;
+    }
+  }
+
+  i.fa-times {
+    font-size: 2rem;
+    color: #175a71;
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+  }
+
+  .links-container {
+    display: flex;
+    flex-direction: column !important;
+    width: 100%;
+    padding-top: 7rem;
+
+    .sidebar-item {
+      background-color: #175a71;
+      color: white;
+      margin: 0.25rem 0;
+      padding: 0.6rem;
+      padding-left: 1rem;
+      font-weight: 500;
+      text-emphasis: none;
+      text-decoration: none;
+      transition: all 0.4s ease;
+
+      i {
+        margin-right: 0.5rem;
+      }
+
+      &:hover {
+        background-color: #175a7179;
+      }
+
+      &.active {
+        background-color: #175a7179;
+      }
+    }
   }
 }

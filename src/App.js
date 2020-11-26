@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 
 ////components//
 import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import CartComponent from "./components/CartComponent";
 
 import Checkout from "./pages/Checkout";
@@ -22,7 +23,8 @@ export default class App extends Component {
     this.state = {
       cartItems: JSON.parse(localStorage.getItem("cart")),
       cartOpen: false,
-      activeScreen: "shop"
+      activeScreen: "shop",
+      sidebarActive: false
     }
   }
   render() {
@@ -45,9 +47,16 @@ export default class App extends Component {
       })
     }
 
+    let toggleSidebar = () => {
+      this.setState({
+        sidebarActive: !this.state.sidebarActive
+      })
+    }
+
     return (
       <Router>
-        <Navbar activeScreen={this.state.activeScreen} updateActiveScreen={updateActiveScreen} cartItems={this.state.cartItems} cartOpen={this.state.cartOpen} updateCartOpenState={updateCartOpenState} />
+        <Navbar activeScreen={this.state.activeScreen} updateActiveScreen={updateActiveScreen} cartItems={this.state.cartItems} cartOpen={this.state.cartOpen} updateCartOpenState={updateCartOpenState} toggleSidebar={toggleSidebar} />
+        <Sidebar activeScreen={this.state.activeScreen} updateActiveScreen={updateActiveScreen} sidebarActive={this.state.sidebarActive} toggleSidebar={toggleSidebar} />
         <Switch>
           <Route exact path="/shop"
             render={(props) => <Shop {...props}

@@ -7,12 +7,12 @@ export default class Navbar extends Component {
       <div
         className={`navbar-container ${this.props.cartOpen ? "cart-open" : ""}`}
       >
-        <i className="fa fa-bars navbar-item"></i>
+        <i className="fa fa-bars navbar-item" onClick={() => this.props.toggleSidebar()}></i>
         <div className="logo">E-Commerce Store</div>
         <div className="links-container">
           <Link
             className={`navbar-item link ${
-              this.props.activeScreen == "home" ? "active" : " "
+              this.props.activeScreen === "home" ? "active" : " "
             }`}
             to="/home"
             onClick={() => this.props.updateActiveScreen("home")}
@@ -21,7 +21,7 @@ export default class Navbar extends Component {
           </Link>
           <Link
             className={`navbar-item link  ${
-              this.props.activeScreen == "shop" ? "active" : " "
+              this.props.activeScreen === "shop" ? "active" : " "
             }`}
             to="/shop"
             onClick={() => this.props.updateActiveScreen("shop")}
@@ -30,7 +30,7 @@ export default class Navbar extends Component {
           </Link>
           <Link
             className={`navbar-item link ${
-              this.props.activeScreen == "about" ? "active" : " "
+              this.props.activeScreen === "about" ? "active" : " "
             }`}
             to="/about"
             onClick={() => this.props.updateActiveScreen("about")}
