@@ -22,6 +22,7 @@ export default class App extends Component {
     this.state = {
       cartItems: JSON.parse(localStorage.getItem("cart")),
       cartOpen: false,
+      activeScreen: "shop"
     }
   }
   render() {
@@ -35,12 +36,18 @@ export default class App extends Component {
       this.setState({
         cartItems: newState,
       })
-      localStorage.setItem("cart", JSON.stringify(this.state.cartItems))
+      localStorage.setItem("cart", JSON.stringify(newState))
+    }
+
+    let updateActiveScreen = (newScreen) => {
+      this.setState({
+        activeScreen: newScreen,
+      })
     }
 
     return (
       <Router>
-        <Navbar cartItems={this.state.cartItems} cartOpen={this.state.cartOpen} updateCartOpenState={updateCartOpenState} />
+        <Navbar activeScreen={this.state.activeScreen} updateActiveScreen={updateActiveScreen} cartItems={this.state.cartItems} cartOpen={this.state.cartOpen} updateCartOpenState={updateCartOpenState} />
         <Switch>
           <Route exact path="/shop"
             render={(props) => <Shop {...props}

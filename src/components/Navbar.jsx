@@ -12,25 +12,28 @@ export default class Navbar extends Component {
         <div className="links-container">
           <Link
             className={`navbar-item link ${
-              window.location.href.includes("home") ? "active" : " "
+              this.props.activeScreen == "home" ? "active" : " "
             }`}
             to="/home"
+            onClick={() => this.props.updateActiveScreen("home")}
           >
             Home
           </Link>
           <Link
             className={`navbar-item link  ${
-              window.location.href.includes("shop") ? "active" : " "
+              this.props.activeScreen == "shop" ? "active" : " "
             }`}
             to="/shop"
+            onClick={() => this.props.updateActiveScreen("shop")}
           >
             Shop
           </Link>
           <Link
             className={`navbar-item link ${
-              window.location.href.includes("about") ? "active" : " "
+              this.props.activeScreen == "about" ? "active" : " "
             }`}
             to="/about"
+            onClick={() => this.props.updateActiveScreen("about")}
           >
             About
           </Link>

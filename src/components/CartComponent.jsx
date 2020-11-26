@@ -15,9 +15,7 @@ export default class Cart extends Component {
         return totalPrice;
       } else return;
     };
-    totalPriceOfCartItems();
-    if (cartItems.length === 0) {
-      console.log("this");
+    if (cartItems === null || cartItems.length === 0) {
       return (
         <div
           className={`cart-container no-items ${
@@ -82,7 +80,7 @@ export default class Cart extends Component {
           >
             Clear Cart
           </div>
-          <div className="checkout-container">
+          <div className="checkout-btn-container">
             <div className="total">
               Total : ₦<span>{totalPriceOfCartItems()}</span>
             </div>

@@ -8,31 +8,35 @@ export default class CartCard extends Component {
     };
   }
 
-  render() {
+
+
+  render() {  
     let deleteFromCart = (id) => {
       let cartItems = this.props.cartItems;
       const newCartItems = cartItems.filter((item) => item.id !== id);
       this.props.updateCartItems(newCartItems);
-      localStorage.setItem("cart", JSON.stringify(newCartItems));
     };
 
     let updateQuantity = (type, id) => {
-      let cartItems = this.props.cartItems;
-      let items = cartItems.find((item) => item.id === id);
-      const newCartItems = cartItems.filter((item) => item.id !== id);
-      items.quantity = this.state.quantity;
-      newCartItems.push(items);
-      this.props.updateCartItems(newCartItems);
       if (type === "decrease") {
         if (this.state.quantity === 1) return;
-        this.setState({
-          qantity: this.state.quantity - 1,
-        });
+        else if (this.state.quantity > 1)
+          this.setState({
+            quantity: this.state.quantity - 1,
+          });
       } else if (type === "increase") {
         this.setState({
           quantity: this.state.quantity + 1,
         });
       }
+      setTimeout(() => {/////doing this because it takes time to update state//////
+        let cartItems = this.props.cartItems;
+        let items = cartItems.find((item) => item.id === id);
+        let newCartItems = cartItems.filter((item) => item.id !== id);
+        items.quantity = this.state.quantity;
+        newCartItems.push(items);
+        this.props.updateCartItems(newCartItems);
+      }, 400);
     };
     return (
       <div className="cart-card-container">

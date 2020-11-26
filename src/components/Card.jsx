@@ -43,12 +43,9 @@ export default class Card extends Component {
         this.props.updateCartItems(cart);
         localStorage.setItem("cart", JSON.stringify(cart));
       } else if (localStorage.getItem("cart")) {
-        const newCartItems = cartItems.filter(
-          (item) => item.title !== newItem.title
-        );
+        let newCartItems = cartItems.filter((item) => item.id !== newItem.id);
         newCartItems.push(newItem);
         this.props.updateCartItems(newCartItems);
-        localStorage.setItem("cart", JSON.stringify(newCartItems));
       }
     };
 
@@ -83,7 +80,7 @@ export default class Card extends Component {
             <input
               type="number"
               value={this.state.itemQuantity}
-              onChange={() => updateItemQuantity()}
+              onChange={() => {}}
             ></input>
             <div
               className="increase"
