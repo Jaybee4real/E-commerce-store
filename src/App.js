@@ -23,7 +23,7 @@ export default class App extends Component {
     this.state = {
       cartItems: JSON.parse(localStorage.getItem("cart")),
       cartOpen: false,
-      activeScreen: window.location.pathname.split("/")[1],
+      activeScreen: window.location.pathname.split("/")[1].toString(),
       sidebarActive: false
     }
   }

@@ -12,7 +12,7 @@ export default class Cart extends Component {
           totalPrice =
             parseFloat(item.price) * parseFloat(item.quantity) + totalPrice;
         });
-        return totalPrice;
+        return Math.round(totalPrice * 100) / 100;
       } else return;
     };
     if (cartItems === null || cartItems.length === 0) {

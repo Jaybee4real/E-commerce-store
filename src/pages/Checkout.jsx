@@ -12,7 +12,7 @@ export default class Checkout extends Component {
           totalPrice =
             parseFloat(item.price) * parseFloat(item.quantity) + totalPrice;
         });
-        return totalPrice;
+        return Math.round(totalPrice * 100) / 100;
       } else return;
     };
 
