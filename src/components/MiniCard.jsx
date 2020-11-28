@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./styles/mini-card.scss";
 
 export default class CartCard extends Component {
   constructor(props) {
@@ -7,7 +8,6 @@ export default class CartCard extends Component {
       quantity: this.props.quantity,
     };
   }
-
 
 
   render() {  

@@ -1,7 +1,34 @@
 import React, { Component } from "react";
+import Card from "../components/MiniCard";
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shopItems: [],
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    if (this.state.shopItems.length === 0) {
+      fetch("https://fakestoreapi.com/products")
+        .then((res) => res.json())
+        .then((data) => {
+          data.forEach((data) => {
+            let prev = this.state.shopItems;
+            prev.push(data);
+            this.setState({
+              shopItems: prev,
+              loading: false,
+            });
+          });
+        });
+    }
+  }
   render() {
+    let shopItems = this.state.shopItems;
+    /////////////////////
     return (
       <div
         className={`page-container ${this.props.cartOpen ? "cart-active" : ""}`}
@@ -28,8 +55,8 @@ export default class Home extends Component {
             clothing designers in the world
           </p>
           <div className="content-container">
-            <div className="coming-soon">
-              Coming Soon...
+            <div className="">
+             
             </div>
           </div>
         </div>

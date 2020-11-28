@@ -48,6 +48,7 @@ export default class Shop extends Component {
         xmlns="http://www.w3.org/2000/svg"
         // xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="25 25 50 50"
+        style={{ width: "110px", height: "auto", marginTop: "10rem" }}
       >
         <circle
           cx="50"
@@ -100,9 +101,7 @@ export default class Shop extends Component {
             <div className="btn">Explore</div>
           </div>
           <div className="right-side">
-            <div
-              className="image image-1"
-            ></div>
+            <div className="image image-1"></div>
           </div>
         </div>
 

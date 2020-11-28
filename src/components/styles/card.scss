@@ -1,0 +1,124 @@
+@import "../../styles/shared_styles.scss";
+.card-container {
+  height: 425px;
+  width: 230px;
+  border-radius: 3px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  padding: 5px;
+  position: relative;
+  margin: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    box-shadow: 0px 1px 2px 1px #80808073;
+  }
+
+  .name {
+    text-align: center;
+    margin: 1rem;
+    font-weight: 600;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .category {
+    font-size: 0.9rem;
+    color: var(--theme-color);
+    margin-left: 0.7rem;
+    font-weight: 500;
+    margin-top: 0.1rem;
+  }
+
+  .rating {
+    margin-left: 0.7rem;
+
+    i {
+      font-size: 0.9rem;
+      color: #f6b100;
+
+      &.fa-star-o {
+        color: #4d656d;
+      }
+    }
+  }
+
+  .price {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% + 10px);
+    position: relative;
+    background-color: var(--theme-color);
+    color: white;
+    padding: 0.4rem;
+    text-align: center;
+    justify-content: space-around;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .add-to-cart-container {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+
+    .add-to-cart-btn {
+      background-color: #f6b100;
+      height: fit-content;
+      width: fit-content;
+      padding: 0.5rem 0.1rem;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+      border-radius: 2px;
+      border: 2px solid #f6b100;
+      cursor: pointer;
+      transition: all 0.4s ease;
+
+      &:hover {
+        background-color: transparent;
+        color: #f6b100 !important;
+
+        i {
+          color: #f6b100 !important;
+        }
+      }
+
+      i {
+        color: white;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+@media (hover: none) {
+  .add-to-cart-container {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .add-to-cart-container {
+    display: none !important;
+  }
+
+  .content-container {
+    margin: 3rem;
+  }
+  .card-container {
+    &:hover {
+      .add-to-cart-container {
+        display: flex !important;
+      }
+    }
+  }
+}

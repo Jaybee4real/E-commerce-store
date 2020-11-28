@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import CartCard from "../components/CartCard";
+import CartCard from "../components/MiniCard";
 
 export default class Checkout extends Component {
   render() {

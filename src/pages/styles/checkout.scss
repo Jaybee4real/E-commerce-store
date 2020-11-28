@@ -1,0 +1,118 @@
+@import "../../styles/shared_styles.scss";
+.checkout-page-container {
+    min-height: 100vh;
+  
+    .checkout-cart-container {
+      max-width: 1200px;
+      padding: 7vw;
+      margin: auto;
+      position: relative;
+    }
+  
+    .options-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      .total {
+        font-size: 1.2rem;
+        font-weight: 600;
+  
+        span {
+          font-weight: 800;
+        }
+      }
+  
+      .clear-cart {
+        margin: 2rem 0.5rem !important;
+      }
+  
+      .paystack,
+      .paypal,
+      .btn {
+        border: 2px solid;
+        width: fit-content;
+        margin: 2rem 0.5rem;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+  
+        i {
+          margin-right: 0.5rem;
+        }
+      }
+  
+      .notice {
+        color: red;
+        font-weight: 500;
+        margin: 2rem 1rem;
+        font-size: 1.1rem;
+      }
+  
+      .blue {
+        color: white;
+        background-color: #175a71;
+        padding: 0.5rem;
+        text-decoration: none;
+        text-emphasis: none;
+        font-weight: 500;
+  
+        &:hover {
+          background-color: transparent;
+          color: #175a71;
+        }
+      }
+  
+      .paypal {
+        color: white;
+        background-color: #175a71;
+        padding: 0.5rem;
+  
+        &:hover {
+          background-color: transparent;
+          color: #175a71;
+        }
+      }
+  
+      .paystack {
+        color: white;
+        background-color: #3bb75e;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0.3rem;
+  
+        .img {
+          height: 1.6rem;
+          width: 2rem;
+          background-image: url(../img/paystack.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+  
+        &:hover {
+          background-color: transparent;
+          color: #3bb75e;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 750px) {
+    .options-container {
+      flex-direction: column !important;
+  
+      .paypal,
+      .paystack {
+        margin: 0.1rem !important;
+      }
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .checkout-header {
+      background-size: 100% !important;
+    }
+  }
+  

@@ -13,7 +13,7 @@ import CartComponent from "./components/CartComponent";
 import Checkout from "./pages/Checkout";
 
 ////style////
-import "./styles/styles.scss"
+import "./styles/shared_styles.scss"
 import About from "./pages/About";
 
 
@@ -55,34 +55,44 @@ export default class App extends Component {
 
     return (
       <Router>
-        <Navbar activeScreen={this.state.activeScreen} updateActiveScreen={updateActiveScreen} cartItems={this.state.cartItems} cartOpen={this.state.cartOpen} updateCartOpenState={updateCartOpenState} toggleSidebar={toggleSidebar} />
-        <Sidebar activeScreen={this.state.activeScreen} updateActiveScreen={updateActiveScreen} sidebarActive={this.state.sidebarActive} toggleSidebar={toggleSidebar} />
-        <Switch>
-          <Route exact path="/shop"
-            render={(props) => <Shop {...props}
-              cartOpen={this.state.cartOpen}
-              updateCartItems={updateCartItems}
-              cartItems={this.state.cartItems} />}
-          ></Route>
-          <Route exact path="/checkout"
-            render={(props) => <Checkout {...props}
-              updateCartItems={updateCartItems}
-              cartItems={this.state.cartItems} />}
-          ></Route>
-          <Route exact path="/home"
-            render={(props) => <Home {...props}
-              cartOpen={this.state.cartOpen} />}
-          ></Route>
-          <Route exact path="/about" component={About}></Route>
-          <Route exact path="/">
-            <Redirect to="/shop"></Redirect>
-          </Route>
-        </Switch>
-        <CartComponent
-          cartItems={this.state.cartItems}
-          updateCartItems={updateCartItems}
-          cartOpen={this.state.cartOpen}
-          updateCartOpenState={updateCartOpenState} />
+        <div style={{ overflow: "scroll" }} className={this.state.activeScreen.toString()}>
+          <Navbar
+            {...this.state}
+            toggleSidebar={toggleSidebar}
+            updateActiveScreen={updateActiveScreen}
+            updateCartOpenState={updateCartOpenState} />
+          <Sidebar
+            {...this.state}
+            updateActiveScreen={updateActiveScreen}
+            toggleSidebar={toggleSidebar} />
+          <Switch>
+            <Route exact path="/shop"
+              render={(props) => <Shop {...props}
+                updateCartItems={updateCartItems}
+                {...this.state} />}
+            ></Route>
+            <Route exact path="/checkout"
+              render={(props) => <Checkout {...props}
+                updateCartItems={updateCartItems}
+                {...this.state} />}
+            ></Route>
+            <Route exact path="/home"
+              render={(props) => <Home {...props}
+                {...this.state} />}
+            ></Route>
+            <Route exact path="/about"
+              render={(props) => <About {...props}
+                {...this.state} />}
+            ></Route>
+            <Route exact path="/">
+              <Redirect to="/shop"></Redirect>
+            </Route>
+          </Switch>
+          <CartComponent
+            {...this.state}
+            updateCartItems={updateCartItems}
+            updateCartOpenState={updateCartOpenState} />
+        </div>
       </Router>
     );
   }

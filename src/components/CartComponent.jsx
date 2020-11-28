@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import CartCard from "./CartCard";
+import CartCard from "./MiniCard";
+import "./styles/cart-component.scss";
 
 export default class Cart extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class Cart extends Component {
         return Math.round(totalPrice * 100) / 100;
       } else return;
     };
+    ///////////
     if (cartItems === null || cartItems.length === 0) {
       return (
         <div
@@ -71,7 +73,6 @@ export default class Cart extends Component {
               />
             );
           })}
-
           <div
             className="clear-cart"
             onClick={() => {

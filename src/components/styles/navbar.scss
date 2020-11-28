@@ -1,0 +1,98 @@
+@import "../../styles/shared_styles.scss";
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  padding: 1.3rem 0 0.6rem 0;
+  width: 100vw;
+  background-color: transparent;
+  position: fixed;
+  top: 3rem;
+  font-family: "montserrat", sans-serif;
+  transition: all 0.4s ease;
+  z-index: 3;
+
+  &.scroll {
+    background-color: white;
+    box-shadow: 0 4px 5px -5px gray;
+    top: 0rem !important;
+
+    .navbar-item,
+    .logo {
+      color: var(--theme-color);
+    }
+  }
+
+  &.cart-open {
+    transform: translateX(-20rem);
+  }
+
+  .logo {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 2rem;
+    margin-right: 10vw;
+  }
+
+  .navbar-item {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    margin: 0.7rem;
+    position: relative;
+    top: 0.2rem;
+    padding: 0.3rem 0;
+    transition: 0.3s ease-in-out;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+
+    &.active,
+    &:hover {
+      border-bottom: 2px solid var(--light-theme-color);
+    }
+
+    &.fa-bars {
+      margin: 0;
+      margin-left: 0.7rem;
+      margin-top: -0.1rem;
+      display: none;
+      font-size: 1.3rem;
+    }
+  }
+
+  .right-side {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin-left: auto;
+    right: 2rem;
+
+    i {
+      margin-top: 0 !important;
+    }
+
+    i.fa-shopping-cart.cart-number:after {
+      position: absolute;
+      right: -0.5rem;
+      top: -0.5rem;
+      content: attr(data-count);
+      font-size: 1rem;
+      padding: 2px;
+      border-radius: 50%;
+      color: white;
+      background: #f6b100;
+      text-align: center;
+      font-family: "montserrat", sans-serif;
+      min-width: 0.9rem;
+      //font-weight:bold;
+    }
+  }
+}
+
+@media (hover: none) {
+  .navbar-item:hover:not(.active) {
+    border: none;
+  }
+}
