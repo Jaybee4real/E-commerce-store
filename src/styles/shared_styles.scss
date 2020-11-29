@@ -18,6 +18,13 @@
   --theme-color: #175a71;
   --light-theme-color: #2a87a7;
 }
+
+.owl-item {
+  width: fit-content !important;
+  .card-container {
+    margin: 5rem 0;
+  }
+}
 /////////////////Shared By MinCard and Checkout Page//////////////////
 .clear-cart {
   color: white;
@@ -81,8 +88,6 @@
   }
 }
 //////////////////////////////////
-
-
 
 .page-container {
   transition: all 0.4s ease;

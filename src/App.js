@@ -78,7 +78,8 @@ export default class App extends Component {
             ></Route>
             <Route exact path="/home"
               render={(props) => <Home {...props}
-                {...this.state} />}
+                {...this.state}
+                updateCartItems={updateCartItems} />}
             ></Route>
             <Route exact path="/about"
               render={(props) => <About {...props}
@@ -91,7 +92,9 @@ export default class App extends Component {
           <CartComponent
             {...this.state}
             updateCartItems={updateCartItems}
-            updateCartOpenState={updateCartOpenState} />
+            updateCartOpenState={updateCartOpenState}
+            updateActiveScreen={updateActiveScreen}
+          />
         </div>
       </Router>
     );

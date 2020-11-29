@@ -86,7 +86,10 @@ export default class Cart extends Component {
               Total : ₦<span>{totalPriceOfCartItems()}</span>
             </div>
             <Link
-              onClick={() => this.props.updateCartOpenState()}
+              onClick={() => {
+                this.props.updateCartOpenState();
+                this.props.updateActiveScreen("checkout");
+              }}
               className="checkout-btn"
               to="/checkout"
             >
