@@ -125,7 +125,7 @@ export default class Home extends Component {
       >
         <div
           className="header alternate"
-          style={{ backgroundColor: "#6b5b4a" }}
+          style={{ backgroundColor: " #a87742" }}
         >
           <div className="left-side">
             <h1>
@@ -199,6 +199,21 @@ export default class Home extends Component {
           </div>
         </div>
         {/* ///// */}
+
+        <div className="full-width">
+          <div className="caption">
+            <div className="heading">70% Off</div>
+            <p>
+              Take advantage of our brand new bonus offer of 70% off on all
+              women clothing,Valid for 30 days{" "}
+            </p>
+            <div className="button">
+              Shop Now <i className="fal fa-long-arrow-right"></i>{" "}
+            </div>
+          </div>
+        </div>
+
+        {/* //// */}
         <div className="section">
           <div className="heading">Our Latest Women Jewelery Collection</div>
           <p className="subheading">
@@ -207,6 +222,19 @@ export default class Home extends Component {
           </p>
           <div className="content-container">
             {this.renderCards("jewelery")}
+          </div>
+        </div>
+        {/* //// */}
+
+        <div className="newsletter">
+          <div className="caption">
+            <div className="heading">
+              Subscribe to our Newsletter and get 40% off on all products
+            </div>
+            <div className="input-container">
+              <input placeholder="Your Email Address" />
+              <div className="button">Subscribe</div>
+            </div>
           </div>
         </div>
       </div>

@@ -24,8 +24,12 @@ html {
 }
 
 .home {
-  --theme-color: #6b5b4a;
-  --light-theme-color: #bd9469;
+  --theme-color: #a87742;
+  --light-theme-color: #d69855;
+}
+
+.owl-theme {
+  max-height: 20rem;
 }
 
 .about {
@@ -36,6 +40,30 @@ html {
 .shop {
   --theme-color: #175a71;
   --light-theme-color: #2a87a7;
+}
+
+.button {
+  font-size: 1rem;
+  background-color: white;
+  color: var(--theme-color);
+  max-width: fit-content;
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: all 0.4s ease;
+
+  i {
+    position: relative;
+    top: 1px;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: white;
+  }
 }
 
 .owl-item {
@@ -345,6 +373,7 @@ html {
       top: 1rem;
       padding-left: 5vw;
       margin-bottom: 2rem;
+      z-index: -1;
 
       .input-container {
         display: flex;
@@ -558,6 +587,110 @@ html {
     transform: scale(0.95);
     img {
       transform: scale(1.1);
+    }
+  }
+}
+
+////offer Section////
+
+.full-width {
+  width: 100vw;
+  min-height: 25rem;
+  margin: 5rem 0;
+  background-position: center;
+  background-size: contain;
+  background: url(../src/img/discunt-bg.jpg) center,
+    linear-gradient(to right, transparent, #6b5b4ab4);
+  background-blend-mode: multiply;
+  display: flex;
+  padding: 0 7vw;
+
+  .caption {
+    padding: 1rem;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    color: white;
+    .heading {
+      font-size: 3rem;
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+
+    p {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .caption {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .full-width {
+    padding: 0.5rem;
+  }
+  .caption {
+    padding: 0.5rem;
+  }
+
+  .item .caption {
+    padding: 1.5rem 0.5rem !important;
+
+    h2 {
+      font-size: 1.4rem !important;
+    }
+  }
+}
+
+.newsletter {
+  background: none;
+  background-color: var(--theme-color);
+  background-blend-mode: multiply;
+  width: 100vw;
+  min-height: 25rem;
+  margin: 5rem 0;
+  display: flex;
+  padding: 0 7vw;
+  align-items: center;
+  justify-content: center;
+
+  .caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .heading {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      text-align: center;
+      color: white;
+      max-width: 700px;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      max-width: fit-content;
+      input {
+        padding: 0.7rem 1.3rem;
+        color: grey;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 5px;
+        border: 1px solid grey;
+        position: relative;
+      }
+
+      .button {
+        margin-left: 0.7rem;
+      }
     }
   }
 }

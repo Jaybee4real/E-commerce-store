@@ -2,10 +2,12 @@ import { Route, Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
+import About from "./pages/About";
 import React, { Component } from "react";
 
 ////components/////
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import CartComponent from "./components/CartComponent";
 
@@ -13,7 +15,6 @@ import Checkout from "./pages/Checkout";
 
 ////style////
 import "./index.scss";
-import About from "./pages/About";
 
 export default class App extends Component {
   constructor(props) {
@@ -118,6 +119,7 @@ export default class App extends Component {
             updateCartOpenState={updateCartOpenState}
             updateActiveScreen={updateActiveScreen}
           />
+          <Footer />
         </Router>
       </div>
     );

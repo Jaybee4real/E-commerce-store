@@ -23,7 +23,7 @@ export default class Sidebar extends Component {
             className={`sidebar-item link ${
               this.props.activeScreen === "home" ? "active" : " "
             }`}
-            to="/home"
+            to="/"
             onClick={() => {
               this.props.updateActiveScreen("home");
               this.props.toggleSidebar();
