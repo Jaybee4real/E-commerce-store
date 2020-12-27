@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./styles/navbar.scss"
+import "./styles/navbar.scss";
 
 export default class Navbar extends Component {
   render() {
@@ -9,18 +9,16 @@ export default class Navbar extends Component {
         className={`navbar-container ${this.props.cartOpen ? "cart-open" : ""}`}
       >
         <i
-          className={`fa fa-bars navbar-item ${this.props.activeScreen}`}
+          className="fa fa-bars navbar-item"
           onClick={() => this.props.toggleSidebar()}
         ></i>
-        <div className={`logo ${this.props.activeScreen}`}>
-          E-Commerce Store
-        </div>
+        <div className="logo">E-Commerce Store</div>
         <div className="links-container">
           <Link
             className={`navbar-item link ${
               this.props.activeScreen === "home" ? "active" : " "
             } ${this.props.activeScreen}`}
-            to="/home"
+            to="/"
             onClick={() => this.props.updateActiveScreen("home")}
           >
             Home
@@ -65,14 +63,20 @@ export default class Navbar extends Component {
   }
 }
 
-let scroll = window.pageYOffset;
 document.addEventListener("scroll", function (e) {
   let navbar = document.querySelector(".navbar-container");
+  let shopMenu = document.querySelector(".menu");
   var offset = window.pageYOffset;
-  scroll = offset;
-  if (scroll > 1) {
+  if (offset > 1) {
     navbar.classList.add("scroll");
-  } else {
+  }
+  if (offset > 850 && shopMenu !== null) {
+    shopMenu.classList.add("fixed");
+  }
+  if (offset < 850 && shopMenu !== null) {
+    shopMenu.classList.remove("fixed");
+  }
+  if (offset < 1 || offset === 0) {
     navbar.classList.remove("scroll");
   }
 });

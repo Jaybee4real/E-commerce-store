@@ -1,4 +1,4 @@
-@import "../../styles/shared_styles.scss";
+@import "../../index.scss";
 .checkout-page-container {
   min-height: 100vh;
 
@@ -91,7 +91,7 @@
       .img {
         height: 1.6rem;
         width: 2rem;
-        background-image: url(../../img/paystack.png);
+        // background-image: url(../../../public/img/paystack.png);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -113,11 +113,5 @@
     .paystack {
       margin: 0.1rem !important;
     }
-  }
-}
-
-@media (max-width: 500px) {
-  .checkout-header {
-    background-size: 100% !important;
   }
 }

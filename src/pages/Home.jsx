@@ -138,6 +138,56 @@ export default class Home extends Component {
             <div className="image image-2"></div>
           </div>
         </div>
+        <div className="new-arrivals section">
+          <div className="heading">New Arrivals</div>
+          <p className="subheading">
+            We just recieved new arrivals,selcted by some of the best designers
+            in the world, check them out!
+          </p>
+
+          <div className="grid-section">
+            <div className="item first full-height">
+              <img src="/img/first.jpg" alt="first"></img>
+              <div className="caption">
+                <h2>Elegant Suits</h2>
+                <p>From classic and vintage to modern wears</p>
+                <div className="cta">
+                  View all<i className="fa fa-long-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+            <div className="item second half-height">
+              <img src="/img/third.jpg" alt="second"></img>
+              <div className="caption">
+                <h2>Fabulous Jewelery</h2>
+                <p>The best jewelry from around the world</p>
+                <div className="cta">
+                  View all<i className="fa fa-long-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+            <div className="item half-height third">
+              <img src="/img/fourth.jpg" alt="fourth"></img>
+              <div className="caption">
+                <h2>Ladies Accessories</h2>
+                <p>Shoes, bags, purses, all available</p>
+                <div className="cta">
+                  View all<i className="fa fa-long-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+            <div className="item full-height fourth">
+              <img src="/img/second.jpg" alt="third"></img>
+              <div className="caption">
+                <h2>Elegant Suits</h2>
+                <p>From classic and vintage to modern wears</p>
+                <div className="cta">
+                  View all<i className="fa fa-long-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="section">
           <div className="heading">Popular Mens Clothing</div>
           <p className="subheading">

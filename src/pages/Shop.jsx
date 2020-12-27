@@ -7,6 +7,7 @@ export default class Shop extends Component {
     this.state = {
       items: [],
       loading: true,
+      amountFilter: 0,
     };
   }
 
@@ -105,9 +106,54 @@ export default class Shop extends Component {
           </div>
         </div>
 
-        <div className="products-section section">
+        <div className="products-section section shop">
           <h1 className="heading">Products</h1>
-          <div className="content-container">{this.populateData()}</div>
+          <div className="content">
+            <div className="menu">
+              <div className="input-container">
+                <input type="text" placeholder="search product" />
+                <i class="fal fa-search"></i>
+              </div>
+              <div className="menu-heading">Product Categories</div>
+              <div className="categories-container">
+                <div className="category">Mens Clothing</div>
+                <div className="category">Jewelery</div>
+                <div className="category">Electronics</div>
+                <div className="category">Womens Clothing</div>
+              </div>
+
+              <hr />
+
+              <div className="menu-heading">Filter</div>
+              <div className="mini-heading">Filter by price</div>
+              <div className="input-container range">
+                <input
+                  type="range"
+                  name="ammount-filter"
+                  min="0"
+                  max="10000"
+                  id=""
+                  value={this.state.amountFilter}
+                  onChange={(e) =>
+                    this.setState({ amountFilter: e.target.value })
+                  }
+                />
+                <span>₦0 - ₦{this.state.amountFilter}</span>
+              </div>
+
+              <div className="mini-heading">Filter by keyword</div>
+              <div className="keyword-container">
+                <div className="keyword active">All</div>
+                <div className="keyword">Popular</div>
+                <div className="keyword">New</div>
+                <div className="keyword">Trending</div>
+                <div className="keyword">Hot</div>
+                <div className="keyword">Sold Out</div>
+              </div>
+            </div>
+
+            <div className="content-container shop">{this.populateData()}</div>
+          </div>
         </div>
       </div>
     );

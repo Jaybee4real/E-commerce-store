@@ -1,4 +1,4 @@
-@import "../../styles/shared_styles.scss";
+@import "../../index.scss";
 .card-container {
   height: 425px;
   width: 230px;
@@ -7,7 +7,7 @@
   cursor: pointer;
   padding: 5px;
   position: relative;
-  margin: 2rem 1.5rem;
+  margin: 2rem .5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

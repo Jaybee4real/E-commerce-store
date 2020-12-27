@@ -98,7 +98,7 @@ export default class Checkout extends Component {
           ) : (
             <div className="options-container">
               <div className="notice">There Are No Items In Your Cart</div>
-              <Link className="btn blue" to="/shop">
+              <Link onClick={() => this.props.updateActiveScreen("shop")} className="btn blue" to="/shop">
                 Continue Shopping
               </Link>
             </div>
