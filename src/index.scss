@@ -205,6 +205,7 @@ html {
       width: 100%;
       background-size: 100%;
       background-repeat: no-repeat;
+      z-index: -1;
 
       &.image-1 {
         background-image: url("./img/download.png");
@@ -373,7 +374,6 @@ html {
       top: 1rem;
       padding-left: 5vw;
       margin-bottom: 2rem;
-      z-index: -1;
 
       .input-container {
         display: flex;
@@ -679,17 +679,22 @@ html {
       margin-bottom: 0.5rem;
       max-width: fit-content;
       input {
-        padding: 0.7rem 1.3rem;
+        padding: 1rem 2rem;
         color: grey;
         font-size: 1rem;
         font-weight: 500;
-        border-radius: 5px;
+        border-radius: 2px;
         border: 1px solid grey;
         position: relative;
+
+        &:focus {
+          outline: none;
+        }
       }
 
       .button {
         margin-left: 0.7rem;
+        padding: 0.8rem;
       }
     }
   }
