@@ -195,7 +195,7 @@ export default class Home extends Component {
             clothing designers in the world
           </p>
           <div className="content-container">
-            {this.renderCards("men clothing")}
+            {this.renderCards("men's clothing")}
           </div>
         </div>
         {/* ///// */}
