@@ -112,7 +112,7 @@ export default class Shop extends Component {
             <div className="menu">
               <div className="input-container">
                 <input type="text" placeholder="search product" />
-                <i class="fal fa-search"></i>
+                <i className="fal fa-search"></i>
               </div>
               <div className="menu-heading">Product Categories</div>
               <div className="categories-container">

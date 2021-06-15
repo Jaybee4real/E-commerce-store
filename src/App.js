@@ -17,111 +17,112 @@ import Checkout from "./pages/Checkout";
 import "./index.scss";
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cartItems: JSON.parse(localStorage.getItem("cart")),
-      cartOpen: false,
-      activeScreen:
-        window.location.pathname.split("/")[1].toString() === ""
-          ? "home"
-          : window.location.pathname.split("/")[1].toString(),
-      sidebarActive: false,
-    };
-  }
-  render() {
-    let updateCartOpenState = () => {
-      this.setState({
-        cartOpen: !this.state.cartOpen,
-      });
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            cartItems: [],
+            cartOpen: false,
+            activeScreen:
+                window.location.pathname.split("/")[1].toString() === ""
+                    ? "home"
+                    : window.location.pathname.split("/")[1].toString(),
+            sidebarActive: false,
+        };
+    }
+    render() {
+        let updateCartOpenState = () => {
+            this.setState({
+                cartOpen: !this.state.cartOpen,
+            });
+        };
 
-    let updateCartItems = (newState) => {
-      this.setState({
-        cartItems: newState,
-      });
-      localStorage.setItem("cart", JSON.stringify(newState));
-    };
 
-    let updateActiveScreen = (newScreen) => {
-      this.setState({
-        activeScreen: newScreen,
-      });
-    };
+        let updateCartItems = (newState) => {
+            this.setState({
+                cartItems: newState,
+            });
+            localStorage.setItem("cart", JSON.stringify(newState));
+        };
 
-    let toggleSidebar = () => {
-      this.setState({
-        sidebarActive: !this.state.sidebarActive,
-      });
-    };
+        let updateActiveScreen = (newScreen) => {
+            this.setState({
+                activeScreen: newScreen,
+            });
+        };
 
-    return (
-      <div
-        style={{ overflow: "scroll" }}
-        className={this.state.activeScreen.toString()}
-      >
-        <Router>
-          <Navbar
-            {...this.state}
-            toggleSidebar={toggleSidebar}
-            updateActiveScreen={updateActiveScreen}
-            updateCartOpenState={updateCartOpenState}
-          />
-          <Sidebar
-            {...this.state}
-            updateActiveScreen={updateActiveScreen}
-            toggleSidebar={toggleSidebar}
-          />
-          <Switch>
-            <Route
-              exact
-              path="/shop"
-              render={(props) => (
-                <Shop
-                  {...props}
-                  updateCartItems={updateCartItems}
-                  {...this.state}
-                />
-              )}
-            ></Route>
-            <Route
-              exact
-              path="/checkout"
-              render={(props) => (
-                <Checkout
-                  {...props}
-                  {...this.state}
-                  updateCartItems={updateCartItems}
-                  updateActiveScreen={updateActiveScreen}
-                />
-              )}
-            ></Route>
-            <Route
-              exact
-              path="/about"
-              render={(props) => <About {...props} {...this.state} />}
-            ></Route>
-            <Route
-              exact
-              path="/"
-              render={(props) => (
-                <Home
-                  {...props}
-                  {...this.state}
-                  updateCartItems={updateCartItems}
-                />
-              )}
-            ></Route>
-          </Switch>
-          <CartComponent
-            {...this.state}
-            updateCartItems={updateCartItems}
-            updateCartOpenState={updateCartOpenState}
-            updateActiveScreen={updateActiveScreen}
-          />
-          <Footer />
-        </Router>
-      </div>
-    );
-  }
+        let toggleSidebar = () => {
+            this.setState({
+                sidebarActive: !this.state.sidebarActive,
+            });
+        };
+
+        return (
+            <div
+                style={{ overflow: "scroll" }}
+                className={this.state.activeScreen.toString()}
+            >
+                <Router>
+                    <Navbar
+                        {...this.state}
+                        toggleSidebar={toggleSidebar}
+                        updateActiveScreen={updateActiveScreen}
+                        updateCartOpenState={updateCartOpenState}
+                    />
+                    <Sidebar
+                        {...this.state}
+                        updateActiveScreen={updateActiveScreen}
+                        toggleSidebar={toggleSidebar}
+                    />
+                    <Switch>
+                        <Route
+                            exact
+                            path="/shop"
+                            render={(props) => (
+                                <Shop
+                                    {...props}
+                                    updateCartItems={updateCartItems}
+                                    {...this.state}
+                                />
+                            )}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/checkout"
+                            render={(props) => (
+                                <Checkout
+                                    {...props}
+                                    {...this.state}
+                                    updateCartItems={updateCartItems}
+                                    updateActiveScreen={updateActiveScreen}
+                                />
+                            )}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/about"
+                            render={(props) => <About {...props} {...this.state} />}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/"
+                            render={(props) => (
+                                <Home
+                                    {...props}
+                                    {...this.state}
+                                    updateCartItems={updateCartItems}
+                                />
+                            )}
+                        ></Route>
+                    </Switch>
+                    <CartComponent
+                        {...this.state}
+                        updateCartItems={updateCartItems}
+                        updateCartOpenState={updateCartOpenState}
+                        updateActiveScreen={updateActiveScreen}
+                    />
+                    <Footer />
+                </Router>
+            </div>
+        );
+    }
 }

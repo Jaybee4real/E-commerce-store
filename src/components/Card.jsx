@@ -29,6 +29,7 @@ export default class Card extends Component {
     };
 
     let addCardItemToCart = () => {
+      console.log(this.props.id)
       let newItem = {
         category: this.props.category,
         quantity: this.state.itemQuantity,
