@@ -24,26 +24,12 @@ export default class Checkout extends Component {
       let email = prompt(
         "Please Enter The Email Address To Recieve The Paystack(stripe) Reciept"
       );
-      fetch("https://api.paystack.co/transaction/initialize", {
-        method: "POST",
-        body: JSON.stringify({
-          amount: amount + "00",
-          email,
-        }),
-        headers: {
-          "content-type": "application/json; charset=UTF-8",
-          Authorization:
-            "Bearer sk_test_cd3f4ab3adec6a1c753555f55729c028d4ffbc43",
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-          if (json.status === true) {
-            window.location = json.data.authorization_url;
-          }
-        })
-        .catch((err) => console.error(err.json));
+      window.PaystackPop.setup({
+        key: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
+        email,
+        amount: amount * 100,
+        callback: (response) => console.log(response),
+      }).openIframe();
     };
 
     //////////////////////////////
